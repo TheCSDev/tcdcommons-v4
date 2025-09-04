@@ -1,5 +1,5 @@
 {
-	"modmenu.descriptionTranslation.tcdcommons": "个人 API 库。它旨在通过避免重写相同的代码来提高性能，并加快 mod 的开发过程。",
+	"modmenu.descriptionTranslation.tcdcommons": "个人API库。它旨在通过避免重写相同的代码来提高性能，并加快mod的开发过程。",
 	"tcdcommons": "TCDCommons API",
 
 	"tcdcommons.translators.title": "翻译人员",
@@ -22,28 +22,28 @@
 	"tcdcommons.api.client.gui.panel.explorer.actionbar.save_file": "保存",
 	"tcdcommons.api.client.gui.panel.explorer.actionbar.open_file": "打开",
 
-	"tcdcommons.api.util.interfaces.tfilefilter.all_files": "所有文件 (*.*)",
-	"tcdcommons.api.util.interfaces.tfilefilter.x_files": "%1$s 文件 (%1$s)",
+	"tcdcommons.api.util.interfaces.tfilefilter.all_files": "所有文件（*.*）",
+	"tcdcommons.api.util.interfaces.tfilefilter.x_files": "%1$s文件（%1$s）",
 
-	"tcdcommons.api.client.gui.panel.explorer.filelistpanel.err_nosuchdir": "这个目录不存在...",
-	"tcdcommons.api.client.gui.panel.explorer.filelistpanel.err_noaccess": "无权读取此目录...",
+	"tcdcommons.api.client.gui.panel.explorer.filelistpanel.err_nosuchdir": "这个目录不存在……",
+	"tcdcommons.api.client.gui.panel.explorer.filelistpanel.err_noaccess": "没有读取此目录的权限……",
 	"tcdcommons.api.client.gui.panel.explorer.filelistpanel.err_other": "%s",
 
-	"tcdcommons.api.client.gui.widget.tselectwidget.default_label": "选择一个选项...",
+	"tcdcommons.api.client.gui.widget.tselectwidget.default_label": "选择一个选项……",
 	
-	"tcdcommons.github.sponsors": "GitHub 赞助",
+	"tcdcommons.github.sponsors": "GitHub赞助",
 	"tcdcommons.github.sponsors.no_sponsors": "目前还没有人赞助这个项目。",
 	"tcdcommons.special_thanks": "特别感谢",
 	"tcdcommons.featured": "featured",
 	"tcdcommons.featured.no_one": "目前还没有人在这份名单上。",
 	"tcdcommons.fetch_fail": "获取信息失败。",
 
-	"tcdcommons.api.client.gui.panel.tpanelelement.mouse_scroll_tip": "使用鼠标滚轮或左键并拖动来滚动此部分...",
+	"tcdcommons.api.client.gui.panel.tpanelelement.mouse_scroll_tip": "使用鼠标滚轮或左键并拖动来滚动此部分……",
 
-	"commands.badges.edit.output": "编辑了徽章数据 '%s' 对于 %s 的玩家。",
-	"commands.badges.clear.output": "清除了 %s 玩家的所有徽章统计数据。",
-	"commands.badges.chat_grant": "%s 获得了玩家徽章 %s。",
-	"commands.badges.query.output": "%s 的玩家徽章统计值对于 %s 为 %s。",
+	"commands.badges.edit.output": "已编辑「%s」徽章数据，对象为玩家%s。",
+	"commands.badges.clear.output": "已清除%s玩家所有徽章统计数据。",
+	"commands.badges.chat_grant": "%s获得了玩家徽章%s。",
+	"commands.badges.query.output": "%s的玩家徽章统计值对于%s为%s。",
 	
 	"tcdcommons.key.refresh_current_screen": "刷新当前屏幕"
 }
