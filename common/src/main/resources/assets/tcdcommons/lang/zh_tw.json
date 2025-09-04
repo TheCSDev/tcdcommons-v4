@@ -1,0 +1,49 @@
+{
+	"modmenu.descriptionTranslation.tcdcommons": "個人API庫。它旨在透過避免重複撰寫相同的程式碼來提升效能，並加快mod的開發流程。",
+	"tcdcommons": "TCDCommons API",
+
+	"tcdcommons.translators.title": "翻譯人員",
+	"tcdcommons.translators.tutorial": "下面的翻譯人員部分使用CSV格式。名稱之間需要放置一個逗號(,)，然後寫下你的GitHub使用者名稱。例如：'TheCSDev, SomeOtherUser, AndSoOn'。",
+	"tcdcommons.translators": "openai:gpt-4, is52hertz, Q2297045667",
+
+	"tcdcommons.client_side": "用戶端",
+	"tcdcommons.server_side": "伺服器端",
+
+	"tcdcommons.api.badge.playerbadge": "玩家徽章",
+	"tcdcommons.api.badge.playerbadge.plural": "玩家徽章",
+
+	"tcdcommons.api.client.gui.screen.explorer.tfilechooserscreen.title": "檔案瀏覽器",
+	"tcdcommons.api.client.gui.screen.explorer.tfilechooserscreen.title_save": "儲存檔案",
+	"tcdcommons.api.client.gui.screen.explorer.tfilechooserscreen.title_open": "開啟檔案",
+	"tcdcommons.api.client.gui.screen.explorer.tfilechooserscreen.title_seldir": "選擇資料夾",
+
+	"tcdcommons.api.client.gui.panel.explorer.actionbar.file_name": "檔案名稱",
+	"tcdcommons.api.client.gui.panel.explorer.actionbar.file_type": "檔案類型",
+	"tcdcommons.api.client.gui.panel.explorer.actionbar.save_file": "儲存",
+	"tcdcommons.api.client.gui.panel.explorer.actionbar.open_file": "開啟",
+
+	"tcdcommons.api.util.interfaces.tfilefilter.all_files": "所有檔案（*.*）",
+	"tcdcommons.api.util.interfaces.tfilefilter.x_files": "%1$s 檔案（%1$s）",
+
+	"tcdcommons.api.client.gui.panel.explorer.filelistpanel.err_nosuchdir": "此資料夾不存在……",
+	"tcdcommons.api.client.gui.panel.explorer.filelistpanel.err_noaccess": "沒有讀取此資料夾的權限……",
+	"tcdcommons.api.client.gui.panel.explorer.filelistpanel.err_other": "%s",
+
+	"tcdcommons.api.client.gui.widget.tselectwidget.default_label": "選擇一個選項……",
+	
+	"tcdcommons.github.sponsors": "GitHub贊助",
+	"tcdcommons.github.sponsors.no_sponsors": "目前尚無人贊助此專案。",
+	"tcdcommons.special_thanks": "特別感謝",
+	"tcdcommons.featured": "Featured",
+	"tcdcommons.featured.no_one": "目前尚無人列在此名單上。",
+	"tcdcommons.fetch_fail": "取得資訊失敗。",
+
+	"tcdcommons.api.client.gui.panel.tpanelelement.mouse_scroll_tip": "使用滑鼠滾輪或按住左鍵拖曳來捲動此區塊……",
+
+	"commands.badges.edit.output": "已編輯「%s」徽章資料，對象為玩家%s。",
+	"commands.badges.clear.output": "已清除%s玩家所有徽章統計資料。",
+	"commands.badges.chat_grant": "%s獲得了玩家徽章%s。",
+	"commands.badges.query.output": "%s的玩家徽章統計值對%s為%s。",
+	
+	"tcdcommons.key.refresh_current_screen": "重新整理目前畫面"
+}
