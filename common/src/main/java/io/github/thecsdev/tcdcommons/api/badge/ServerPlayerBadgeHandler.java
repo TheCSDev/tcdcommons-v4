@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import io.github.thecsdev.tcdcommons.TCDCommons;
 import io.github.thecsdev.tcdcommons.TCDCommonsConfig;
 import io.github.thecsdev.tcdcommons.api.network.CustomPayloadNetwork;
+import io.github.thecsdev.tcdcommons.mixin.hooks.AccessorServerPlayer;
 import io.github.thecsdev.tcdcommons.network.TCDCommonsNetwork;
 import io.github.thecsdev.tcdcommons.util.TCDCT;
 import io.netty.buffer.Unpooled;
@@ -245,7 +246,7 @@ public final class ServerPlayerBadgeHandler extends PlayerBadgeHandler
 		
 		//construct message, and broadcast it
 		final var message = TCDCT.cmd_pb_chatGrant(player.getName(), badgeName);
-		player.getServer().getPlayerList().broadcastSystemMessage(message, false);
+		((AccessorServerPlayer)(Object)player).getServer().getPlayerList().broadcastSystemMessage(message, false);
 		
 		//return
 		return true;

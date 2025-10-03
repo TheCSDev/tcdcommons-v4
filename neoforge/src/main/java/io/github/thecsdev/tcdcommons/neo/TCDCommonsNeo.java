@@ -18,7 +18,7 @@ public class TCDCommonsNeo
 		ModInfoProvider.setInstance(new NeoForgeModInfoProvider());
 
 		//create an instance of the mod's main class, depending on the dist
-		switch(FMLEnvironment.dist)
+		switch(FMLEnvironment.getDist())
 		{
 			case CLIENT           -> new TCDCommonsClient();
 			case DEDICATED_SERVER -> new TCDCommonsServer();

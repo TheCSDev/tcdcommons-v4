@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.ApiStatus.Internal;
 import org.jetbrains.annotations.Nullable;
+import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
 import java.nio.file.Path;
@@ -26,6 +27,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static com.mojang.blaze3d.platform.InputConstants.*;
 import static io.github.thecsdev.tcdcommons.client.TCDCommonsClient.MC_CLIENT;
+import static org.lwjgl.glfw.GLFW.*;
 
 public abstract class TScreen implements TParentElement
 {
@@ -335,7 +337,8 @@ public abstract class TScreen implements TParentElement
 		return (mX >= cX && mX <= cXW && mY >= cY && mY <= cYH);
 	}
 	// ==================================================
-	public static boolean hasKeyDown(int keyCode) { return isKeyDown(MC_CLIENT.getWindow().getWindow(), keyCode); }
-	public static boolean hasWndDown() { return hasKeyDown(KEY_LWIN) || hasKeyDown(KEY_RWIN); }
+	public static boolean hasKeyDown(int keyCode) { return isKeyDown(MC_CLIENT.getWindow(), keyCode); }
+	public static boolean hasShiftDown() { return hasKeyDown(GLFW_KEY_LEFT_SHIFT) || hasKeyDown(GLFW_KEY_RIGHT_SHIFT); }
+	public static boolean hasWndDown() { return hasKeyDown(GLFW_KEY_LEFT_SUPER) || hasKeyDown(GLFW_KEY_RIGHT_SUPER); }
 	// ==================================================
 }

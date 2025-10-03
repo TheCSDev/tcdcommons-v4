@@ -137,7 +137,7 @@ public @Virtual class TEntityRendererElement extends TBlankElement
 		if(this.entityErrorState || this.entity == null)
 		{
 			if(this.entityTypeName != null)
-				this.entityTypeName.renderCentered(pencil, this.entityTextX, this.entityTextY);
+				this.entityTypeName.render(pencil, MultiLineLabel.Align.CENTER, this.entityTextX, this.entityTextY, MC_CLIENT.font.lineHeight, false, 0xFFFFFFFF);
 			else pencil.drawTFill(TDrawContext.DEFAULT_ERROR_COLOR);
 			return;
 		}

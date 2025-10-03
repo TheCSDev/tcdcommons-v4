@@ -1,6 +1,7 @@
 package io.github.thecsdev.tcdcommons.api.client.gui.widget;
 
 import io.github.thecsdev.tcdcommons.api.client.gui.panel.TPanelElement;
+import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreen;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TInputContext;
 import io.github.thecsdev.tcdcommons.api.event.TEvent;
@@ -108,7 +109,7 @@ public @Virtual class TTextFieldWidget extends TClickableWidget implements IText
 				if(keyCode == 259 || keyCode == 261)
 					inputBackspace(keyCode == 261);
 				//handle Shift+Enter key presses
-				else if(Screen.hasShiftDown() && (keyCode == 257 || keyCode == 335))
+				else if(TScreen.hasShiftDown() && (keyCode == 257 || keyCode == 335))
 					click(false);
 				//if nothing handles the key-press, return false
 				else return false;

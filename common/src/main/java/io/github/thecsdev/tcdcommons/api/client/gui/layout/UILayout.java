@@ -145,7 +145,7 @@ public abstract class UILayout extends Object
 		final var el = new TBlankElement(n1.x, n1.y, mt.getWidth() + 10, (mt.getLineCount() * fh) + 4)
 		{
 			public final @Override void render(TDrawContext pencil) {
-				mt.renderLeftAlignedNoShadow(pencil, getX(), getY(), fh + 2, color);
+				mt.render(pencil, MultiLineLabel.Align.LEFT, getX(), getY(), fh + 2, false, color);
 			}
 		};
 		panel.addChild(el, false);

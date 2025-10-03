@@ -6,7 +6,8 @@
 	"mixins": [
 		"AccessorArgumentTypes",
 		"AccessorBiomeAccess",
-		"AccessorStatHandler"
+		"AccessorStatHandler",
+		"AccessorServerPlayer"
 	],
 	"injectors": { "defaultRequire": 1 }
 }

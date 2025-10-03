@@ -5,7 +5,6 @@ import io.github.thecsdev.tcdcommons.api.client.gui.TElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.TParentElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TInputContext;
-import io.github.thecsdev.tcdcommons.api.client.gui.util.TInputContext.*;
 import io.github.thecsdev.tcdcommons.api.client.util.interfaces.IStatsListener;
 import io.github.thecsdev.tcdcommons.api.util.annotations.Virtual;
 import net.minecraft.client.Minecraft;
@@ -15,6 +14,9 @@ import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.ApiStatus.Internal;
@@ -25,9 +27,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import static com.mojang.blaze3d.platform.InputConstants.KEY_ESCAPE;
 import static com.mojang.blaze3d.platform.InputConstants.KEY_TAB;
 import static io.github.thecsdev.tcdcommons.api.client.gui.util.TInputContext.*;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 
 /**
  * The {@link TScreenWrapper} serves as an adapter for the {@link TScreen}
@@ -202,44 +204,42 @@ public @Virtual class TScreenWrapper<T extends TScreen> extends Screen
 		}
 	}
 	// ==================================================
-	public final @Override boolean keyPressed(int keyCode, int scanCode, int modifiers) { return __onTKeyPR(keyCode, scanCode, modifiers, true); }
-	public final @Override boolean keyReleased(int keyCode, int scanCode, int modifiers) { return __onTKeyPR(keyCode, scanCode, modifiers, false); }
+	public final @Override boolean keyPressed(KeyEvent keyEvent) { return __onTKeyPR(keyEvent, true); }
+	public final @Override boolean keyReleased(KeyEvent keyEvent) { return __onTKeyPR(keyEvent, false); }
 	//
-	private final boolean __onTKeyPR(int keyCode, int scanCode, int modifiers, boolean isDown)
+	private final boolean __onTKeyPR(KeyEvent e, boolean isDown)
 	{
 		//Screen takes priority here, as its elements are rendered on top of TElement-s
-		if(isDown ? super.keyPressed(keyCode, scanCode, modifiers) : super.keyReleased(keyCode, scanCode, modifiers))
+		if(isDown ? super.keyPressed(e) : super.keyReleased(e))
 			return true;
 		
 		//if the Screen doesn't handle it, forward it to TScreen
-		else if(input(ofKeyboardPR(new InputKeyboardKey(keyCode, scanCode, modifiers), isDown)))
+		else if(input(ofKeyboardPR(new InputKeyboardKey(e.key(), e.scancode(), e.modifiers()), isDown)))
 			return true;
 		
 		//lastly, handle ESC key-press
-		else if(keyCode == KEY_ESCAPE && isDown && this.target.shouldCloseOnEsc()) { onClose(); return true; }
+		else if(e.key() == GLFW_KEY_ESCAPE && isDown && this.target.shouldCloseOnEsc()) { onClose(); return true; }
 		else return false;
 	}
 	// --------------------------------------------------
-	public final @Override boolean charTyped(char chr, int modifiers)
+	public final @Override boolean charTyped(CharacterEvent e)
 	{
 		//Screen takes priority here, as its elements are rendered on top of TElement-s
-		if(super.charTyped(chr, modifiers))
-			return true;
+		if(super.charTyped(e)) return true;
 		//if the Screen doesn't handle it, forward it to TScreen
-		return input(ofCharType(chr, modifiers));
+		return input(ofCharType((char) e.codepoint(), e.modifiers()));
 	}
 	// --------------------------------------------------
-	public final @Override boolean mouseClicked(double mouseX, double mouseY, int button) { return __onTMouseCR(mouseX, mouseY, button, true); }
-	
-	public final @Override boolean mouseReleased(double mouseX, double mouseY, int button) { return __onTMouseCR(mouseX, mouseY, button, false); }
+	public final @Override boolean mouseClicked(MouseButtonEvent e, boolean doubled) { return __onTMouseCR(e, true); }
+	public final @Override boolean mouseReleased(MouseButtonEvent e) { return __onTMouseCR(e, false); }
 	//
-	private final boolean __onTMouseCR(double mouseX, double mouseY, int button, boolean isDown)
+	private final boolean __onTMouseCR(MouseButtonEvent e, boolean isDown)
 	{
 		//Screen takes priority here, as its elements are rendered on top of TElement-s
-		if(isDown ? super.mouseClicked(mouseX, mouseY, button) : super.mouseReleased(mouseX, mouseY, button))
+		if(isDown ? super.mouseClicked(e, false) : super.mouseReleased(e))
 			return true;
 		//if the Screen doesn't handle it, forward it to TScreen
-		return input(ofMouseCR(button, isDown));
+		return input(ofMouseCR(e.button(), isDown));
 	}
 	// --------------------------------------------------
 	public final @Override void mouseMoved(double mouseX, double mouseY)
@@ -252,14 +252,14 @@ public @Virtual class TScreenWrapper<T extends TScreen> extends Screen
 		input(ofMouseMove(mouseX, mouseY));
 		super.mouseMoved(mouseX, mouseY);
 	}
-	
-	public final @Override boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY)
+
+	public final @Override boolean mouseDragged(MouseButtonEvent e, double deltaX, double deltaY)
 	{
 		//Screen takes priority here, as its elements are rendered on top of TElement-s
-		if(super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY))
+		if(super.mouseDragged(e, deltaX, deltaY))
 			return true;
 		//if the Screen doesn't handle it, forward it to TScreen
-		return input(ofMouseDrag(mouseX, mouseY, deltaX, deltaY, this.target.__draggingButton));
+		return input(ofMouseDrag(e.x(), e.y(), deltaX, deltaY, this.target.__draggingButton));
 	}
 	// --------------------------------------------------
 	public final @Override boolean mouseScrolled(double mouseX, double mouseY, double hAmount, double vAmount)
@@ -373,7 +373,7 @@ public @Virtual class TScreenWrapper<T extends TScreen> extends Screen
 				
 				//and if tab navigation is involved, and isn't forced, and
 				//the target element doesn't handle the input, do the tab navigation
-				if(isTab) return this.target.inputTabNavigation(Screen.hasShiftDown());
+				if(isTab) return this.target.inputTabNavigation(TScreen.hasShiftDown());
 				else return false; //IMPORTANT to break out of here
 			}
 			case KEY_RELEASE:

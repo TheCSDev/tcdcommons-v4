@@ -22,7 +22,7 @@ public final class NeoForgeModInfo extends ModInfo
 	public NeoForgeModInfo(String modId) throws NullPointerException, NoSuchElementException
 	{
 		super(modId);
-		this.modContainer = FMLLoader.getLoadingModList().getMods()
+		this.modContainer = FMLLoader.getCurrent().getLoadingModList().getMods()
 				.stream()
 				.filter(it -> it.getModId().equals(modId))
 				.findFirst()

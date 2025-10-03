@@ -12,7 +12,7 @@ public final class NeoForgeModInfoProvider extends ModInfoProvider
 
 	public final @Override String[] getLoadedModIDs()
 	{
-		return FMLLoader.getLoadingModList().getMods().stream()
+		return FMLLoader.getCurrent().getLoadingModList().getMods().stream()
 			.map(it -> it.getModId())
 			.toArray(String[]::new);
 	}

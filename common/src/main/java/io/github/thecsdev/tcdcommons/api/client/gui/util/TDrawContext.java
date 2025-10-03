@@ -270,12 +270,15 @@ public final class TDrawContext extends GuiGraphics
 	 */
 	public final void drawTBorder(int color)
 	{
-		renderOutline(
-				this.currentTarget.getX(), this.currentTarget.getY(),
-				this.currentTarget.getWidth(), this.currentTarget.getHeight(),
-				color);
+		final int x = this.currentTarget.getX(), y = this.currentTarget.getY();
+		final int w = this.currentTarget.getWidth(), h = this.currentTarget.getHeight();
+		fillB(x, y, w, 1, color);                 //top side
+		fillB(x, y + 1, 1, h - 2, color);         //left side
+		fillB(x + w - 1, y + 1, 1, h - 2, color); //right side
+		fillB(x, y + h - 1, w, 1, color);         //bottom side
 	}
-	
+	private final void fillB(int x, int y, int w, int h, int color) { fill(x, y, x + w, y + h, color); }
+
 	/**
 	 * Draws a {@link #fill(int, int, int, int, int)} over the {@link #currentTarget}.
 	 * @param color The fill color.

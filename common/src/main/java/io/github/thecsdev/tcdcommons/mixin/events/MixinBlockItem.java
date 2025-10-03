@@ -22,7 +22,7 @@ public abstract class MixinBlockItem
 		//ignore if not placed or not proper environment
 		final var r = ci.getReturnValue();
 		if(r == null || !r.consumesAction() ||
-				context == null || context.getLevel().isClientSide || !(context.getPlayer() instanceof ServerPlayer))
+				context == null || context.getLevel().isClientSide() || !(context.getPlayer() instanceof ServerPlayer))
 			return;
 		
 		//handle if placed
