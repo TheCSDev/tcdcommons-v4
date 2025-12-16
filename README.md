@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This repository is archived. It hosts legacy versions of this mod (`v4.x` and below). For the latest features, bug fixes, and versions (`v5.0+`), please visit the new repository: https://github.com/TheCSDev/tcdcommons
+
 TCDCommons is a Minecraft modding API library that features its own GUI system and various events and hooks for the game, as well as utilities that may be useful to mod developers. This API's main purpose is to help optimize and speed up the development of mods, as well as to avoiding re-writing the same code for every mod that needs to do similar things. Please note that because this mod is a library, it may not offer useful front-end features to the user.
 
 ## Purpose
